@@ -32,7 +32,7 @@ try:
     print(f'`tput lines`: {columns}')
     print(f'`tput rows`: {rows}')
 except:
-    raise
+    pass
 
 # FROM: https://stackoverflow.com/a/26855761/118608
 try:
