@@ -8,9 +8,12 @@ from subprocess import check_output
 # FROM: https://github.com/pytest-dev/py/blob/master/py/_io/terminalwriter.py#L39-L58
 print(f'shutil.get_terminal_size(): {shutil.get_terminal_size()}')
 
-call = fcntl.ioctl(1, termios.TIOCGWINSZ, b'\000' * 8)
-height, width = struct.unpack("hhhh", call)[:2]
-print(f'termios.TIOCGWINSZ: (height: {height}, width: {width})')
+try:
+    call = fcntl.ioctl(1, termios.TIOCGWINSZ, b'\000' * 8)
+    height, width = struct.unpack("hhhh", call)[:2]
+    print(f'termios.TIOCGWINSZ: (height: {height}, width: {width})')
+except:
+    pass
 
 print(f'COLUMNS environment variable: {os.environ.get("COLUMNS")}')
 
